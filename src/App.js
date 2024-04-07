@@ -1,25 +1,31 @@
-import logo from './logo.png';
 import './App.css';
+import pokemon from "./pokemon.json"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p style={{
-          marginTop: "100px",
-        }}>
-          Sunny's portfolio is coming.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{
+      margin: "auto",
+      width: 800,
+      paddingTop: "1rem"
+    }}>
+      <h1 className='title'>pokemon search</h1>
+
+      <table width="100%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pokemon.slice(0,20).map((pokemon) => (
+            <tr key={pokemon.id}>
+              <td>{pokemon.name.english}</td>
+              <td>{pokemon.type.join(", ")}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
